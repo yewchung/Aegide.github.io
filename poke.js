@@ -105,6 +105,7 @@ function resetPoke() {
     var L1 = ["hp2","atk2","def2","spatk2","spdef2","spe2","bs2"];
     for (var i = 0; i < L0.length; i++) {
         document.getElementById(L0[i]).style.color = "";
+        document.getElementById(L1[i]).style.color = "";
     }
 }
 
