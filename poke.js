@@ -62,8 +62,8 @@ function resetPoke() {
     document.getElementById("pic1").src = "question.png";
     document.getElementById("pic2").src = "question.png";
 
-    document.getElementById("dexnumber1").innerHTML = "-";
-    document.getElementById("dexnumber2").innerHTML = "-";
+    document.getElementById("dexnumber1").innerHTML = "&nbsp;";
+    document.getElementById("dexnumber2").innerHTML = "&nbsp;";
     document.getElementById("FP1").innerHTML = "mon1/mon2";
     document.getElementById("FP2").innerHTML = "mon2/mon1";
 
