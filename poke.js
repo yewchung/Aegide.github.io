@@ -64,6 +64,8 @@ function resetPoke() {
 
     document.getElementById("dexnumber1").innerHTML = "&nbsp;";
     document.getElementById("dexnumber2").innerHTML = "&nbsp;";
+    document.getElementById("fusionid1").innerHTML = "&nbsp;";
+    document.getElementById("fusionid2").innerHTML = "&nbsp;";
     document.getElementById("FP1").innerHTML = "mon1/mon2";
     document.getElementById("FP2").innerHTML = "mon2/mon1";
 
@@ -469,8 +471,10 @@ function fuseBothPoke(){
     //Dex Numbers
     var dexnum1 = Math.floor(num1 + (420 * num2));
     var dexnum2 = Math.floor(num2 + (420 * num1));
-    document.getElementById("dexnumber1").innerHTML = "" + dexnum1 + " (" + num1 + "." + num2 + ")";
-    document.getElementById("dexnumber2").innerHTML = "" + dexnum2 + " (" + num2 + "." + num1 + ")";
+    document.getElementById("dexnumber1").innerHTML = dexnum1;
+    document.getElementById("dexnumber2").innerHTML = dexnum2;
+    document.getElementById("fusionid1").innerHTML = " (" + num1 + "." + num2 + ")";
+    document.getElementById("fusionid2").innerHTML = " (" + num2 + "." + num1 + ")";
     
     //Name of fusions
     document.getElementById("FP1").innerHTML = fmon1+ "/" + fmon2;
@@ -674,8 +678,8 @@ function fuseBothPoke(){
     }
 
     //Picture of fusions (if inside CustomBattlers)
-    showFusion("pic1", pic1);
-    showFusion("pic2", pic2);
+    showFusion("pic1", pic1, "fusionid1");
+    showFusion("pic2", pic2, "fusionid2");
 
     //Abilities 1
     var abilities1 = fusionAbilities(mon1abilities, mon2abilities);
@@ -716,20 +720,21 @@ function typeId(ftype) {
 
 
 //Custom sprite fusion function
-function showFusion(elementId, fusionId){
+function showFusion(elementId, fusionId, elementFusionId){
     
     fusionUrl = "https://aegide.github.io/CustomBattlers/" + fusionId;
     document.getElementById(elementId).title = fusionId;
 
     if(doesImageExists(fusionUrl)){
         document.getElementById(elementId).src = fusionUrl;
+        document.getElementById(elementFusionId).style.color = "green";
     }
     else{//Screenshot of autogen pokemon
         fallbackFusionRepository = "https://raw.githubusercontent.com/Aegide/FusionSprites/master/Japeal/"
         headId = fusionId.split(".")[0];
         fallbackFusionUrl = fallbackFusionRepository + headId + "/" + fusionId;
-        
         document.getElementById(elementId).src = fallbackFusionUrl;
+        document.getElementById(elementFusionId).style.color = "red";
     }
 }
 
