@@ -9,6 +9,28 @@ var mon1types, mon2types;
 var mon1abilities, mon2abilities;
 var jsonBody;
 
+//Adding options to datalist
+var box1 = document.getElementById('fname1');
+var box2 = document.getElementById('fname2');
+var dl = document.createElement('datalist');
+dl.id = 'dlPkmn';
+
+for (var i=0 ; i < ids.length; i += 1) {
+    var option = document.createElement('option');
+    //Special name case
+    if (nameFix.includes(ids[i][0].toLowerCase())) {
+        var val = nameException[nameFix.indexOf(ids[i][0].toLowerCase())]
+        option.value = val[0].toUpperCase() + val.substring(1)
+    }
+    else {
+        option.value = ids[i][0];
+    }
+    dl.appendChild(option);
+}
+box1.appendChild(dl);
+box2.appendChild(dl);
+
+
 //Press ENTER on text area 1
 var pkmn1 = document.getElementById('fname1');
 pkmn1.addEventListener("keydown", function(event) {
