@@ -116,11 +116,21 @@ function getRandomPokeID(){
 }
 
 
-function randomPoke() {
+function randomBothPoke() {randomPoke(true, true)}
+function randomFirstPoke() {randomPoke(true, false)}
+function randomSecondPoke() {randomPoke(false, true)}
+
+
+function randomPoke(should_rand1, should_rand2) {
     document.getElementById("button").disabled = true;
     document.getElementById("random").disabled = true;
-    rand1 = getRandomPokeID()
-    rand2 = getRandomPokeID()
+    document.getElementById("random1").disabled = true;
+    document.getElementById("random2").disabled = true;
+
+    if(should_rand1 || num1 == undefined) {rand1 = getRandomPokeID();}
+    else{rand1 = num1 - 1;}
+    if(should_rand2 || num2 == undefined) {rand2 = getRandomPokeID();}
+    else{rand2 = num2 - 1;}
 
     var name = ids[rand1][0].toLowerCase();
     if (nameFix.includes(name)) {
@@ -154,7 +164,9 @@ function fusePoke() {
 
     if (isMissingNames(mon1, mon2)) {
         document.getElementById("button").disabled = false;
-	    document.getElementById("random").disabled = false
+	    document.getElementById("random").disabled = false;
+        document.getElementById("random1").disabled = false;
+        document.getElementById("random2").disabled = false;
         alert("Please fill the two text inputs!");
     }
 
@@ -686,6 +698,8 @@ function fuseBothPoke(){
     //Fusion done
     document.getElementById("button").disabled = false;
     document.getElementById("random").disabled = false;    
+    document.getElementById("random1").disabled = false;
+    document.getElementById("random2").disabled = false;
 
 }
 
