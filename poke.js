@@ -62,8 +62,8 @@ function resetPoke() {
     document.getElementById("pic1").src = "question.png";
     document.getElementById("pic2").src = "question.png";
 
-    document.getElementById("dexnumber1").innerHTML = "#: ";
-    document.getElementById("dexnumber2").innerHTML = "#: ";
+    document.getElementById("dexnumber1").innerHTML = "-";
+    document.getElementById("dexnumber2").innerHTML = "-";
     document.getElementById("FP1").innerHTML = "mon1/mon2";
     document.getElementById("FP2").innerHTML = "mon2/mon1";
 
@@ -457,8 +457,8 @@ function fuseBothPoke(){
     //Dex Numbers
     var dexnum1 = Math.floor(num1 + (420 * num2));
     var dexnum2 = Math.floor(num2 + (420 * num1));
-    document.getElementById("dexnumber1").innerHTML = "#: " + dexnum1;
-    document.getElementById("dexnumber2").innerHTML = "#: " + dexnum2;
+    document.getElementById("dexnumber1").innerHTML = "" + dexnum1 + " (" + num1 + "." + num2 + ")";
+    document.getElementById("dexnumber2").innerHTML = "" + dexnum2 + " (" + num2 + "." + num1 + ")";
     
     //Name of fusions
     document.getElementById("FP1").innerHTML = fmon1+ "/" + fmon2;
