@@ -94,6 +94,7 @@ function getRandomPokeID(){
 
 
 function randomPoke() {
+    document.getElementById("button").disabled = true;
     document.getElementById("random").disabled = true;
     rand1 = getRandomPokeID()
     rand2 = getRandomPokeID()
@@ -129,6 +130,7 @@ function fusePoke() {
     mon2 = getPokemonName("fname2");
 
     if (isMissingNames(mon1, mon2)) {
+        document.getElementById("button").disabled = false;
 	    document.getElementById("random").disabled = false
         alert("Please fill the two text inputs!");
     }
@@ -659,6 +661,7 @@ function fuseBothPoke(){
     document.getElementById("hab2").innerHTML = hiddenAbilitiesText2;
 
     //Fusion done
+    document.getElementById("button").disabled = false;
     document.getElementById("random").disabled = false;    
 
 }
