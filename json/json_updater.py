@@ -17,3 +17,6 @@ jsonFile.write(jsonStr)
 jsonFile.close()
 
 print("DONE : ", len(fusions))
+
+# ^(?!("[0-9]+\.[0-9]+"))
+# "[0-9]+\.[0-9]+"
