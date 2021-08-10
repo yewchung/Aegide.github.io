@@ -12,7 +12,7 @@ for element in listdir(path_custom):
         print(element[:-4])
 
 jsonStr = json.dumps(fusions, separators=(',\n', ': '))
-jsonFile = open(path_json + "/" +"sprites.json", "w")
+jsonFile = open(path_json + "/" +"aegide_sprites.json", "w")
 jsonFile.write(jsonStr)
 jsonFile.close()
 
