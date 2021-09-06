@@ -781,6 +781,53 @@ const hydreigonAbilities = [
     }
 ]
 
+//Cleffa
+const cleffaAbilities = [
+    {
+        "ability": {
+            "name": "magic guard"
+        },
+        "is_hidden": false,
+    },
+    {
+        "ability": {
+            "name": "cute charm"
+        },
+        "is_hidden": false,
+    },
+    {
+        "ability": {
+            "name": "friend guard",
+        },
+        "is_hidden": true,
+    }
+]
+
+//Clefairy
+const clefairyAbilities = cleffaAbilities;
+
+//Clefable
+const clefableAbilities = [
+    {
+        "ability": {
+            "name": "magic guard"
+        },
+        "is_hidden": false,
+    },
+    {
+        "ability": {
+            "name": "cute charm"
+        },
+        "is_hidden": false,
+    },
+    {
+        "ability": {
+            "name": "unware",
+        },
+        "is_hidden": true,
+    }
+]
+
 //Input
 const abilitiesException = [
     "chandelure",
@@ -809,7 +856,10 @@ const abilitiesException = [
     "kyurem",
     "ferrothorn",
     "talonflame",
-    "hydreigon"
+    "hydreigon",
+    "cleffa",
+    "clefairy",
+    "clefable"
 ]
 
 //Output
@@ -840,7 +890,10 @@ const abilitiesFix = [
     kyuremAbilities,
     ferrothornAbilities,
     talonflameAbilities,
-    hydreigonAbilities
+    hydreigonAbilities,
+    cleffaAbilities,
+    clefairyAbilities,
+    clefableAbilities
 ]
 
 //Swap
