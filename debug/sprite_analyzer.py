@@ -28,8 +28,8 @@ PINK = (255, 0, 255, 255)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-MEGA_COLOR_LIMIT = 100
-COLOR_LIMIT = 25
+MEGA_COLOR_LIMIT = 10000
+COLOR_LIMIT = 1000
 
 path_custom = "CustomBattlers"
 path_debug = "debug"
@@ -140,8 +140,8 @@ def get_non_transparent_colors(image):
     old_colors = image.getcolors(MEGA_COLOR_LIMIT)
     new_colors = []
 
-    if old_colors is not None and isinstance(old_colors[0][1], tuple):
-
+    # TODO : be careful of RGBA with 3 channels
+    if old_colors is not None and isinstance(old_colors[0][1], tuple) and len(old_colors[0][1]) == 4:
         for old_color in old_colors:
             if old_color[1][3]==255:
                 new_colors.append(old_color)
@@ -243,7 +243,7 @@ def analyze_sprite(element):
         # show_sprite(element)
         
     except Exception as e:
-        print(fusion_name, "[UNKOWN FILE ERROR]", e)
+        print(fusion_name, "[UNKNOWN FILE ERROR]", e, "\n")
     
     else:
         error_amount = 0
@@ -273,7 +273,7 @@ def explore_sprites():
 explore_sprites()
 
 
-# analyze_sprite("243.287.png")
+# analyze_sprite("11.12.png")
 
 
 
