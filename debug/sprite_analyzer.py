@@ -35,6 +35,7 @@ WEIRD_LIMIT = 1000
 
 path_custom = "CustomBattlers"
 path_debug = "debug"
+path_result = "CustomBattlersVisible"
 bad_fusions = []
 
 
@@ -222,13 +223,14 @@ def test_diversity(image):
 
 
 # This test destroys the picture
-def test_transparency(image, pixels):
+def test_transparency(element, image, pixels):
     return_value = 0
     if TEST_TRANSPARENCY:
         try:
             weird_amount = detect_weird_transparency(image, pixels)
             if weird_amount > WEIRD_LIMIT:
-                image.show()
+                # image.show()
+                image.save(join(path_result, "b" + element))
                 print("[TRANSPARENCY ERROR]", weird_amount)
                 return_value = 1
         except Exception as e:
@@ -268,12 +270,16 @@ def analyze_sprite(element):
         error_amount += test_diversity(image)
 
         # Destructive test
-        error_amount += test_transparency(image, pixels)
+        error_amount += test_transparency(element, image, pixels)
     
-        if error_amount > 0:
-                print(">>",fusion_name, "\n")
-
         image.close()
+
+        if error_amount > 0:
+            print(">>",fusion_name, "\n")
+
+        elif VERBOSE_MODE:
+            print(fusion_name)
+        
         
 
 def explore_sprites():
