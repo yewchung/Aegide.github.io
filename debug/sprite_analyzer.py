@@ -4,6 +4,7 @@ from os.path import isfile, join
 import io
 from PIL import Image
 from PIL import ImageCms
+import PIL
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -30,6 +31,7 @@ WHITE = (255, 255, 255)
 
 MEGA_COLOR_LIMIT = 10000
 COLOR_LIMIT = 1000
+WEIRD_LIMIT = 1000
 
 path_custom = "CustomBattlers"
 path_debug = "debug"
@@ -39,12 +41,12 @@ bad_fusions = []
 main_path = path_custom
 
 
-TEST_SIZE = True
+TEST_SIZE = False
 TEST_PALETTE = False
-TEST_HIGH_DIVERSITY = True
-TEST_MASSIVE_DIVERSITY = True
+TEST_HIGH_DIVERSITY = False
+TEST_MASSIVE_DIVERSITY = False
 
-TEST_TRANSPARENCY = False
+TEST_TRANSPARENCY = True
 
 VERBOSE_MODE = False
 
@@ -77,37 +79,45 @@ def apply_borders(pixels):
 
 
 def have_normal_transparency(pixels, i, j):
-    return pixels[i, j][3] == 0
+    if isinstance(pixels[i, j], tuple) and len(pixels[i, j]) == 4:
+        return pixels[i, j][3] == 0
+    else:
+        return True
 
 
 def have_weird_transparency(pixels, i, j):
-    return pixels[i, j][3] != 0 and pixels[i, j][3] != 255
+    if isinstance(pixels[i, j], tuple) and len(pixels[i, j]) == 4:
+        return pixels[i, j][3] != 0 and pixels[i, j][3] != 255
+    else:
+        return False
 
 
 def is_not_transparent(pixels, i, j):
     return pixels[i, j][3] != 0
 
 
-def detect_weird_transparency(pixels):
-    is_weird = False
-    for i in range(0, 288):
-        for j in range(0, 288):
+def detect_weird_transparency(image, pixels):
+    weird_amount = 0
 
-            # Weird pixels : PINK
-            if have_weird_transparency(pixels, i, j):
-                # print(i, j, pixels[i, j])
-                pixels[i, j] = PINK
-                is_weird = True
+    if isinstance(pixels[0, 0], tuple) and len(pixels[0, 0]) == 4:
+        for i in range(0, 288):
+            for j in range(0, 288):
 
-            # Background : WHITE
-            elif have_normal_transparency(pixels, i, j):
-                pixels[i, j] = WHITE
+                # Weird pixels : PINK
+                if have_weird_transparency(pixels, i, j):
+                    # print(i, j, pixels[i, j])
+                    pixels[i, j] = PINK
+                    weird_amount += 1
 
-            # Actual sprite : BLACK
-            else:
-                pixels[i, j] = BLACK
+                # Background : WHITE
+                elif have_normal_transparency(pixels, i, j):
+                    pixels[i, j] = WHITE
 
-    return is_weird
+                # Actual sprite : BLACK
+                else:
+                    pixels[i, j] = BLACK
+
+    return weird_amount
 
 
 def find_one_pixel(pixels):
@@ -207,7 +217,6 @@ def test_diversity(image):
         except Exception as e:
             print("test_diversity", e)
             print(traceback.format_exc())
-
             return_value = 100
     return return_value
 
@@ -217,13 +226,17 @@ def test_transparency(image, pixels):
     return_value = 0
     if TEST_TRANSPARENCY:
         try:
-            if detect_weird_transparency(pixels):
-                # image.show()
-                print("[TRANSPARENCY ERROR]")
+            weird_amount = detect_weird_transparency(image, pixels)
+            if weird_amount > WEIRD_LIMIT:
+                image.show()
+                print("[TRANSPARENCY ERROR]", weird_amount)
                 return_value = 1
         except Exception as e:
-            print("test_transparency", e)
-            return_value = 100
+            if e == IndexError:
+                print("test_transparency", e)
+                print(traceback.format_exc())
+                return_value = 100
+                
     return return_value
 
 
@@ -243,7 +256,8 @@ def analyze_sprite(element):
         # show_sprite(element)
         
     except Exception as e:
-        print(fusion_name, "[UNKNOWN FILE ERROR]", e, "\n")
+        # print(fusion_name, "[UNKNOWN FILE ERROR]", e, "\n")
+        pass
     
     else:
         error_amount = 0
@@ -272,8 +286,7 @@ def explore_sprites():
 
 explore_sprites()
 
-
-# analyze_sprite("11.12.png")
+# analyze_sprite("243.299.png")
 
 
 
