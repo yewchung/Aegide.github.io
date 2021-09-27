@@ -3,8 +3,6 @@ from os.path import isfile, join
 
 import io
 from PIL import Image
-from PIL import ImageCms
-import PIL
 
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
@@ -52,13 +50,8 @@ TEST_TRANSPARENCY = True
 VERBOSE_MODE = False
 
 
-
-
-
-
 def is_valid_size(image):
     return image.size == (288,288)
-
 
 def show_sprite(element):
     
@@ -70,7 +63,6 @@ def show_sprite(element):
     imgplot = plt.imshow(image)
     plt.show()
 
-
 def apply_borders(pixels):
     for i in range(0, 288): 
             pixels[i, 0] = PINK
@@ -78,13 +70,11 @@ def apply_borders(pixels):
             pixels[0, i] = PINK
             pixels[287, i] = PINK
 
-
 def have_normal_transparency(pixels, i, j):
     if isinstance(pixels[i, j], tuple) and len(pixels[i, j]) == 4:
         return pixels[i, j][3] == 0
     else:
         return True
-
 
 def have_weird_transparency(pixels, i, j):
     if isinstance(pixels[i, j], tuple) and len(pixels[i, j]) == 4:
@@ -92,10 +82,8 @@ def have_weird_transparency(pixels, i, j):
     else:
         return False
 
-
 def is_not_transparent(pixels, i, j):
     return pixels[i, j][3] != 0
-
 
 def detect_weird_transparency(image, pixels):
     weird_amount = 0
@@ -120,7 +108,6 @@ def detect_weird_transparency(image, pixels):
 
     return weird_amount
 
-
 def find_one_pixel(pixels):
     one_pixel = None
     should_break = False
@@ -138,14 +125,11 @@ def find_one_pixel(pixels):
             break
     return one_pixel
 
-
 def is_using_palette(pixels):
     return isinstance(pixels[0,0], int)
 
-
 def is_missing_colors(image):
     return image.getcolors(MEGA_COLOR_LIMIT) is None
-
 
 def get_non_transparent_colors(image):
     old_colors = image.getcolors(MEGA_COLOR_LIMIT)
@@ -159,14 +143,12 @@ def get_non_transparent_colors(image):
 
     return new_colors
 
-
 def is_overusing_colors(image):
     colors = get_non_transparent_colors(image)
     if colors is not None:
         color_amount = len(colors)
         return color_amount > COLOR_LIMIT
     return False
-
 
 def test_colors(image):
     return_value = 0
@@ -180,7 +162,6 @@ def test_colors(image):
             return_value = 100
     return return_value
 
-
 def test_palette(pixels):
     return_value = 0
     if TEST_PALETTE:
@@ -193,7 +174,6 @@ def test_palette(pixels):
             return_value = 100
     return return_value
 
-
 def test_size(image):
     return_value = 0
     if TEST_SIZE:
@@ -205,7 +185,6 @@ def test_size(image):
             print("test_size", e)
             return_value = 100
     return return_value
-
 
 def test_diversity(image):
     return_value = 0
@@ -221,8 +200,7 @@ def test_diversity(image):
             return_value = 100
     return return_value
 
-
-# This test destroys the picture
+# Destructive test
 def test_transparency(element, image, pixels):
     return_value = 0
     if TEST_TRANSPARENCY:
@@ -241,22 +219,12 @@ def test_transparency(element, image, pixels):
                 
     return return_value
 
-
 def analyze_sprite(element):
     fusion_name = element[:-4]
     try:
         image = Image.open(join(main_path, element))
         pixels = image.load()
-        
-        
-        # apply_borders(pixels)
-        # one_pixel = find_one_pixel(pixels)
-        
-
-        # print("analyze_sprite", type(pixels))
-        # image.show()
-        # show_sprite(element)
-        
+                
     except Exception as e:
         # print(fusion_name, "[UNKNOWN FILE ERROR]", e, "\n")
         pass
@@ -280,8 +248,6 @@ def analyze_sprite(element):
         elif VERBOSE_MODE:
             print(fusion_name)
         
-        
-
 def explore_sprites():
     print("[ START ]\n")
     for element in listdir(main_path):
@@ -289,12 +255,5 @@ def explore_sprites():
             analyze_sprite(element)
     print("[ END ]")
 
-
 explore_sprites()
-
 # analyze_sprite("243.299.png")
-
-
-
-
-
