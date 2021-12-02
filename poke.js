@@ -730,7 +730,7 @@ function showFusion(elementId, fusionId, elementFusionId){
         document.getElementById(elementFusionId).style.color = "green";
     }
     else{//Screenshot of autogen pokemon
-        fallbackFusionRepository = "https://raw.githubusercontent.com/Aegide/FusionSprites/master/Japeal/"
+        fallbackFusionRepository = "https://raw.githubusercontent.com/Aegide/autogen-fusion-sprites/master/Japeal/"
         headId = fusionId.split(".")[0];
         fallbackFusionUrl = fallbackFusionRepository + headId + "/" + fusionId;
         document.getElementById(elementId).src = fallbackFusionUrl;
