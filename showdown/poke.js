@@ -922,7 +922,7 @@ function typeId(ftype) {
 //Custom sprite fusion function
 function showFusion(elementId, fusionId){
     
-    fusionUrl = "https://aegide.github.io/CustomBattlers/" + fusionId;
+    fusionUrl = "https://raw.githubusercontent.com/Aegide/custom-fusion-sprites/main/CustomBattlers/" + fusionId;
 
     if(doesImageExists(fusionUrl)){
         document.getElementById(elementId).src = fusionUrl;
