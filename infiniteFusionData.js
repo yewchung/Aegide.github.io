@@ -785,19 +785,19 @@ const hydreigonAbilities = [
 const cleffaAbilities = [
     {
         "ability": {
-            "name": "magic guard"
+            "name": "magic-guard"
         },
         "is_hidden": false,
     },
     {
         "ability": {
-            "name": "cute charm"
+            "name": "cute-charm"
         },
         "is_hidden": false,
     },
     {
         "ability": {
-            "name": "friend guard",
+            "name": "friend-guard",
         },
         "is_hidden": true,
     }
@@ -822,7 +822,7 @@ const clefableAbilities = [
     },
     {
         "ability": {
-            "name": "unware",
+            "name": "unaware",
         },
         "is_hidden": true,
     }
