@@ -958,6 +958,7 @@ const typeSwap =
 ,["steel","water","Empoleon"]
 ,["dark","ghost","Spiritomb"]
 ,["steel","grass","Ferrothorn"]
+,["grass","psychic","Celebi"]
 ]
 
 const typeUni =
