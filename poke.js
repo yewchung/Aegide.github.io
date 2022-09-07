@@ -280,7 +280,7 @@ function fuseFirstPoke(jsonString){
         if (compt == 0) {
             mon1types.push(type1[0].type.name);
             if (type1.length == 2 && compt != 2) {
-                if (type1[0].type.name == "normal" && type1[1].type.name == "flying" && mon1 != "fletchling") {
+                if (type1[0].type.name == "normal" && type1[1].type.name == "flying") {
                     mon1types[0] = "flying";
                 } else {
                     mon1types.push(type1[1].type.name);
@@ -407,7 +407,7 @@ function fuseSecondPoke(jsonString){
         if (compt == 0) {
             mon2types.push(type2[0].type.name);
             if (type2.length == 2 && compt != 2) {
-                if (type2[0].type.name == "normal" && type2[1].type.name == "flying" && mon2 != "fletchling") {
+                if (type2[0].type.name == "normal" && type2[1].type.name == "flying") {
                     mon2types[0] = "flying";
                 } else {
                     mon2types.push(type2[1].type.name);
