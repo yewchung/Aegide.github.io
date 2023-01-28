@@ -113,3 +113,11 @@ h3 {
     width: 52px;
     height: 22px;
 }
+
+.green-text {
+    color: green;
+}
+
+.red-text {
+    color: red;
+}
