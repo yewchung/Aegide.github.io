@@ -121,3 +121,20 @@ h3 {
 .red-text {
     color: red;
 }
+
+a:link {
+    color:rgb(30,130,230);
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  
+  a:visited {
+    color:darkorchid;
+    background-color: transparent;
+  }
+  
+  a:active {
+    color:darkorchid;
+    background-color: transparent;
+    text-decoration: dashed;
+  }
