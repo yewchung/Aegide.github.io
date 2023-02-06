@@ -124,10 +124,10 @@ function randomSecondPoke() {randomPoke(false, true)}
 
 
 function randomPoke(should_rand1, should_rand2) {
-    document.getElementById("button").disabled = true;
-    document.getElementById("random").disabled = true;
-    document.getElementById("random1").disabled = true;
-    document.getElementById("random2").disabled = true;
+    buttons = document.getElementsByClassName("button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    };
 
     if(should_rand1 || num1 == undefined) {rand1 = getRandomPokeID();}
     else{rand1 = num1 - 1;}
@@ -165,10 +165,10 @@ function fusePoke() {
     mon2 = getPokemonName("fname2");
 
     if (isMissingNames(mon1, mon2)) {
-        document.getElementById("button").disabled = false;
-	    document.getElementById("random").disabled = false;
-        document.getElementById("random1").disabled = false;
-        document.getElementById("random2").disabled = false;
+        buttons = document.getElementsByClassName("button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+    };
         alert("Please fill the two text inputs!");
     }
 
@@ -700,11 +700,10 @@ function fuseBothPoke(){
     document.getElementById("hab2").innerHTML = hiddenAbilitiesText2;
 
     //Fusion done
-    document.getElementById("button").disabled = false;
-    document.getElementById("random").disabled = false;    
-    document.getElementById("random1").disabled = false;
-    document.getElementById("random2").disabled = false;
-
+    buttons = document.getElementsByClassName("button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+    };
 }
 
 
@@ -791,6 +790,11 @@ function readURLImage(input) {
 
 // Shows the images for the mon and it's shinies
 function showShinies(randomHead, randomBody){
+    buttons = document.getElementsByClassName("button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    };
+
     document.getElementById("input_file").value = ""; // To make the input work everytime, even if the input image has not changed
 
     if (randomHead) {
@@ -859,10 +863,10 @@ function showShinies(randomHead, randomBody){
     picShiny = document.getElementById("pic4");
     picShiny.title = picShiny.alt = "Hue shift " + Math.trunc(hueShift[2]);
 
-    document.getElementById("button").disabled = false;
-    document.getElementById("random").disabled = false;
-    document.getElementById("random1").disabled = false;
-    document.getElementById("random2").disabled = false;
+    buttons = document.getElementsByClassName("button");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = false;
+    };
 }
 
 // Calculates the hue of the shiny and returns it it.
