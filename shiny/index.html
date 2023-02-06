@@ -9,20 +9,28 @@
     </head>
 <body>    
     <h1><a href="../index.html" style="text-decoration:none; color:white">Infinite Fusion Calculator</a></h1>
-    <h2>Shiny preview</h2>
+    <h2>Shiny preview, by <a href="https://github.com/Jokaes">Jokaes</a></h2>
     <div id="text">
         <h4>
             <br>
             Only works with <a href="https://infinitefusion.fandom.com/wiki/Pokédex">natives mons available</a> in
-            Pokémon Infinite Fusion v5!<br>
-            This tool was created first by <a href="https://github.com/SDM0">SDM0</a>, then updated by <a
-            href="https://github.com/Aegide/Aegide.github.io">Aegide</a>.<br>
-            Shiny preview by <a href="https://github.com/Jokaes">Jokaes</a>.
+            Pokémon Infinite Fusion v5 !<br>
+            This project was created by <a href="https://twitter.com/SDM_0_">SDM0</a>,
+            then maintained by <a href="https://github.com/Aegide">Aegide</a>.<br>
+            The data used is from the game, but is mostly based on generation 7.
             <br><br>
-            <i>The sprites shown here were mostly made by members of the <a
-            href="https://discord.com/invite/2yynWRvBrB">IF Discord</a>,<br>
-            with some also coming from the <a href="https://www.reddit.com/r/PokemonInfiniteFusion/">IF Reddit</a>
-            community.</i>
+            <i>
+                <span class="green-text">Custom sprites</span> in <span class="green-text">green</span> are made by artists,<br>
+                from the <a href="https://discord.com/invite/2yynWRvBrB">Infinite Fusion Discord</a>
+                and <a href="https://www.reddit.com/r/PokemonInfiniteFusion/">Reddit</a>.
+            </i>
+            <br><br>
+            <i>
+                <span class="red-text">Generated sprites</span> in <span class="red-text">red</span> are from 
+                <a href="https://japeal.com/pkm/">Japeal</a>.<br>
+                They were extracted and <a href="https://github.com/Aegide/autogen-fusion-sprites/commits/master/Battlers">fixed</a>
+                by <a href="https://github.com/Aegide">Aegide</a>.
+            </i>
         </h4>
         <br>
         <button id="random" class="button" onclick="showShinies(true, true)">Random</button>
@@ -41,7 +49,7 @@
     <button id="fuse" class="button" onclick="showShinies(false, false)">Fuse</button>
     </br></br>
     <div>
-        <a id="dexnumber1">&nbsp;</a><a id="fusionid1">&nbsp;</a>
+        <span id="dexnumber1">&nbsp;</span><span id="fusionid1">&nbsp;</span>
     </div>
     <sector id="shinies" class="shinies">
         <div>
