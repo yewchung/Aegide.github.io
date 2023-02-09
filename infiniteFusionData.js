@@ -988,7 +988,8 @@ const selfFusionTypeException = [
     "lopunny",
     "sceptile",
     "gyarados",
-    "aggron"
+    "aggron",
+    "groudon"
 ]
 
 const selfFusionTypeFix = [
@@ -997,7 +998,8 @@ const selfFusionTypeFix = [
     ["normal","fighting"],
     ["grass","dragon"],
     ["water","dark"],
-    ["steel"]
+    ["steel"],
+    ["ground","fire"]
 ]
 
 const types = new Array(
