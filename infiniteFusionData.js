@@ -828,6 +828,22 @@ const clefableAbilities = [
     }
 ]
 
+//Gallade
+const galladeAbilities = [
+    {
+        "ability": {
+            "name": "steadfast"
+        },
+        "is_hidden": false,
+    },
+    {
+        "ability": {
+            "name": "justified",
+        },
+        "is_hidden": true,
+    }
+]
+
 //Input
 const abilitiesException = [
     "chandelure",
@@ -859,7 +875,8 @@ const abilitiesException = [
     "hydreigon",
     "cleffa",
     "clefairy",
-    "clefable"
+    "clefable",
+    "gallade"
 ]
 
 //Output
@@ -893,7 +910,8 @@ const abilitiesFix = [
     hydreigonAbilities,
     cleffaAbilities,
     clefairyAbilities,
-    clefableAbilities
+    clefableAbilities,
+    galladeAbilities
 ]
 
 //Swap
