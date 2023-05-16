@@ -186,3 +186,10 @@ a:link {
         grid-template-columns: 1fr;
     }
 }
+
+#button {
+    background: rgb(100,154,255);
+    background: linear-gradient(180deg, rgba(100,154,255,1) 0%, rgba(69,65,185,1) 100%);
+    border-color: rgb(100,154,255);
+    font-weight: bold;
+}
